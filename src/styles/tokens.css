@@ -1,0 +1,107 @@
+/* ───────────────────────── Design tokens ─────────────────────────
+   Hierarchy comes from spacing, contrast, type and depth — colour is almost absent.
+   Dark is the default theme; light is an opt-in via the system bar. */
+
+:root {
+  --font-ui: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* type scale */
+  --fs-2xs: 10.5px;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-md: 14.5px;
+  --fs-lg: 18px;
+  --fs-xl: 26px;
+  --fs-2xl: 36px;
+
+  /* geometry (keep --bar-h in sync with BAR_H in state/geometry.ts) */
+  --bar-h: 32px;
+  --r-win: 10px;
+  --r-ctl: 7px;
+  --r-card: 10px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 120ms;
+  --t-base: 180ms;
+
+  /* safe areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #101112;
+  --surface: #18191b;
+  --surface-2: #1e2023;
+  --glass: rgba(24, 25, 27, 0.78);
+  --glass-strong: rgba(19, 20, 22, 0.9);
+  --glass-bar: rgba(16, 17, 18, 0.6);
+
+  --text: #f2f0ea;
+  --text-2: #96979b;
+  --text-3: #7e7f84;
+
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.17);
+  --hover: rgba(255, 255, 255, 0.06);
+  --press: rgba(255, 255, 255, 0.1);
+
+  --accent: #ff8a3d;
+  --accent-soft: rgba(255, 138, 61, 0.16);
+
+  --shadow: 0 28px 64px -24px rgba(0, 0, 0, 0.72), 0 4px 14px rgba(0, 0, 0, 0.32);
+  --shadow-sm: 0 10px 28px -12px rgba(0, 0, 0, 0.6);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --wall-line: rgba(255, 255, 255, 0.07);
+  --wall-glow-a: rgba(255, 255, 255, 0.06);
+  --wall-glow-b: rgba(255, 138, 61, 0.09);
+  --grain-opacity: 0.07;
+  --vignette: rgba(0, 0, 0, 0.5);
+
+  --paper: #f3f1ea;
+  --paper-ink: #17181a;
+  --paper-muted: #5b5d62;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #e9e7e1;
+  --surface: #f4f2ed;
+  --surface-2: #ebe9e3;
+  --glass: rgba(247, 245, 240, 0.82);
+  --glass-strong: rgba(250, 248, 244, 0.94);
+  --glass-bar: rgba(240, 238, 232, 0.66);
+
+  --text: #16171a;
+  --text-2: #54565b;
+  --text-3: #6a6c71;
+
+  --line: rgba(0, 0, 0, 0.11);
+  --line-strong: rgba(0, 0, 0, 0.2);
+  --hover: rgba(0, 0, 0, 0.05);
+  --press: rgba(0, 0, 0, 0.09);
+
+  --accent: #c2500a;
+  --accent-soft: rgba(194, 80, 10, 0.13);
+
+  --shadow: 0 28px 60px -26px rgba(40, 36, 28, 0.38), 0 4px 12px rgba(40, 36, 28, 0.12);
+  --shadow-sm: 0 10px 24px -12px rgba(40, 36, 28, 0.3);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  --wall-line: rgba(0, 0, 0, 0.08);
+  --wall-glow-a: rgba(255, 255, 255, 0.7);
+  --wall-glow-b: rgba(194, 80, 10, 0.08);
+  --grain-opacity: 0.1;
+  --vignette: rgba(60, 54, 40, 0.18);
+
+  --paper: #fdfcf9;
+  --paper-ink: #17181a;
+  --paper-muted: #5b5d62;
+}

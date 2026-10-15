@@ -1,0 +1,84 @@
+/* Subtle orange: warm graphite surfaces, orange only as an accent. */
+:root[data-theme='dark'] {
+  --bg: #111010;
+  --surface: #191817;
+  --surface-2: #201e1c;
+  --glass: rgba(25, 24, 23, 0.78);
+  --glass-strong: rgba(20, 19, 18, 0.9);
+  --glass-bar: rgba(17, 16, 16, 0.6);
+  --text: #f4f0ea;
+  --text-2: #9b9892;
+  --text-3: #85827c;
+  --line: rgba(255, 235, 220, 0.1);
+  --line-strong: rgba(255, 235, 220, 0.17);
+  --accent: #e8843c;
+  --accent-soft: rgba(232, 132, 60, 0.15);
+  --wall-glow-b: rgba(232, 132, 60, 0.06);
+
+  --select-bg: rgba(232, 132, 60, 0.38);
+  --select-fg: #fff7ef;
+}
+
+/* Light theme counterpart (deeper orange for contrast on pale surfaces). */
+:root[data-theme='light'] {
+  --accent: #b84a0a;
+  --accent-soft: rgba(184, 74, 10, 0.12);
+  --wall-glow-b: rgba(184, 74, 10, 0.07);
+
+  --select-bg: rgba(184, 74, 10, 0.28);
+  --select-fg: inherit;
+}
+
+/* ───────────── Orange interactions ───────────── */
+
+/* Selected text */
+::selection {
+  background: var(--select-bg);
+  color: var(--select-fg);
+}
+::-moz-selection {
+  background: var(--select-bg);
+  color: var(--select-fg);
+}
+input,
+textarea,
+select {
+  caret-color: var(--accent);
+  accent-color: var(--accent);
+}
+
+/* Hover: text turns orange on quiet controls … */
+.lab__tab:hover,
+.side-item:hover,
+.chip:hover,
+.dock__item:hover,
+.dock__item:focus-visible,
+.bar__btn:hover,
+button.bar__brand:hover,
+a:hover {
+  color: var(--accent);
+}
+
+/* … and outlines pick up an orange edge on surfaces and buttons. */
+.btn:hover,
+.chip:hover,
+.card--button:hover,
+.pcard:hover,
+button.prow:hover,
+.search:hover,
+.select:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* Hover fills: orange-tinted, only while hovering (resting surfaces stay neutral). */
+.btn:not(.btn--primary):hover,
+.chip:hover,
+.card--button:hover,
+.pcard:hover,
+button.prow:hover,
+.side-item:hover,
+.dock__item:hover,
+.dock__item:focus-visible,
+.bar__btn:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}

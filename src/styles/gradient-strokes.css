@@ -1,0 +1,49 @@
+/* ───────────── Gradient strokes ─────────────
+   One diagonal stroke shared by windows, dock and app icon tiles:
+   accent at the top-left corner → clear in the middle → faint accent bottom-right.
+   Drawn with a masked ::after so the real border stays crisp over the glass blur. */
+.win__frame,
+.dicon__tile,
+.m-app__tile {
+  position: relative;
+}
+.win__frame::after,
+.dock::after,
+.dicon__tile::after,
+.m-app__tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 38%, transparent 62%, var(--accent-soft) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.35;
+  transition: opacity var(--t-base) var(--ease);
+}
+/* Windows: full strength on the front window only. */
+.win[data-front='true'] .win__frame::after {
+  opacity: 1;
+}
+.win[data-front='true'] .win__frame {
+  border-color: transparent;
+}
+.dock::after {
+  opacity: 0.7;
+}
+/* Icon tiles: quiet at rest, brighter on hover/focus, full when selected. */
+.dicon__tile::after,
+.m-app__tile::after {
+  opacity: 0.55;
+}
+.dicon:hover .dicon__tile::after,
+.dicon:focus-visible .dicon__tile::after,
+.m-app:active .m-app__tile::after {
+  opacity: 0.9;
+}
+.dicon[data-selected='true'] .dicon__tile::after {
+  opacity: 1;
+}

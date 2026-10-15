@@ -1,0 +1,23 @@
+{
+  "name": "mono-os",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MONO OS — an interactive personal portfolio shaped like a minimal desktop operating system.",
+  "scripts": {
+    "dev": "bun index.html",
+    "build": "bun run build.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && bun run build.ts",
+    "preview": "serve dist"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^6.0.0"
+  }
+}

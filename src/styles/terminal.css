@@ -1,0 +1,133 @@
+/* ───────────── Terminal app ───────────── */
+:root {
+  --term-err: #f0766f;
+  --term-ok: #7bd08f;
+}
+:root[data-theme='light'] {
+  --term-err: #b3261e;
+  --term-ok: #1f7a3d;
+}
+
+.term {
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px 16px 18px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+  cursor: text;
+  overscroll-behavior: contain;
+}
+.term__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.term__line--out {
+  display: block;
+}
+.term__entry + .term__entry {
+  margin-top: 2px;
+}
+
+/* prompt */
+.term__prompt {
+  flex: none;
+  margin-right: 8px;
+  white-space: pre;
+}
+.term__user {
+  color: var(--accent);
+  font-weight: 500;
+}
+.term__colon,
+.term__sigil {
+  color: var(--text-3);
+}
+.term__cwd {
+  color: var(--text-2);
+}
+.term__sigil {
+  margin-left: 6px;
+}
+.term__typed {
+  color: var(--text);
+}
+
+/* input */
+.term__input-row {
+  flex-wrap: nowrap;
+  margin-top: 2px;
+  cursor: text;
+}
+.term__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  caret-color: var(--accent);
+}
+
+/* output tones */
+.term__seg--dim {
+  color: var(--text-3);
+}
+.term__seg--err {
+  color: var(--term-err);
+}
+.term__seg--ok {
+  color: var(--term-ok);
+}
+.term__seg--accent {
+  color: var(--accent);
+}
+.term__seg--head {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* clickable output */
+.term__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--accent);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  cursor: var(--cur-pointer, pointer);
+}
+.term__link:hover {
+  text-decoration-style: solid;
+}
+.term__link:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.term__hints {
+  margin: 6px 0 2px;
+  color: var(--text-3);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 767px) {
+  .term {
+    padding: 14px 14px calc(18px + var(--safe-bottom));
+    font-size: 12.5px;
+  }
+  .term__input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+}

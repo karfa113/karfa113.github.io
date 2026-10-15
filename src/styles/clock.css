@@ -1,0 +1,216 @@
+/* ───────────── Clock & calendar popover ───────────── */
+.clockm {
+  display: flex;
+  align-items: center;
+}
+.bar__clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 24px;
+  padding: 0 8px;
+  margin-right: -8px;
+  border-radius: 6px;
+  color: inherit;
+  transition: background var(--t-fast) var(--ease);
+}
+.bar__clock:hover,
+.bar__clock[aria-expanded='true'],
+.m-bar__time:hover,
+.m-bar__time[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.m-bar__time {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 10px;
+  margin-left: -10px;
+  border-radius: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* panel */
+/* The panel is anchored to the (fixed) bar itself: the bar's backdrop-filter would otherwise
+   make `position: fixed` resolve against the bar instead of the screen. */
+.clockm {
+  position: static;
+}
+.clockp {
+  position: absolute;
+  z-index: 9600;
+  top: calc(100% + 6px);
+  right: 10px;
+  width: 332px;
+  max-width: calc(100vw - 20px);
+  padding: 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 97%, transparent);
+  box-shadow: var(--highlight), var(--shadow);
+  backdrop-filter: blur(24px) saturate(1.25);
+  -webkit-backdrop-filter: blur(24px) saturate(1.25);
+  transform-origin: 100% 0;
+  animation: clockp-in var(--t-base) var(--ease) backwards;
+  cursor: var(--cur-default, auto);
+}
+.clockp[data-variant='mobile'] {
+  left: 10px;
+  right: 10px;
+  width: auto;
+  max-width: none;
+  transform-origin: 20px 0;
+}
+@keyframes clockp-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-4px);
+  }
+}
+
+.clockp__time {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.clockp__date {
+  margin-top: 4px;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+}
+
+.clockp__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  margin: 14px 0 0;
+  padding: 12px 0;
+  border-block: 1px solid var(--line);
+  font-size: var(--fs-2xs);
+}
+.clockp__meta dt {
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.clockp__meta dd {
+  margin: 2px 0 0;
+  color: var(--text);
+  font-size: var(--fs-xs);
+  overflow-wrap: anywhere;
+}
+
+/* calendar */
+.clockp__cal {
+  margin-top: 12px;
+}
+.clockp__nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.clockp__month {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.clockp__btn,
+.clockp__today {
+  display: inline-grid;
+  place-items: center;
+  height: 28px;
+  border-radius: 7px;
+  color: var(--text-2);
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.clockp__btn {
+  width: 28px;
+}
+.clockp__today {
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.clockp__btn:hover,
+.clockp__today:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.clockp__week,
+.clockp__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.clockp__week {
+  margin-bottom: 2px;
+  color: var(--text-3);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.clockp__day {
+  display: grid;
+  place-items: center;
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.clockp__day[data-outside='true'] {
+  color: var(--text-3);
+  opacity: 0.55;
+}
+.clockp__day:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.clockp__day[data-today='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.clockp__day[data-selected='true'] {
+  background: var(--text);
+  color: var(--bg);
+  border-color: transparent;
+  opacity: 1;
+}
+.clockp__day[data-selected='true'][data-today='true'] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.clockp__rel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-2xs);
+  color: var(--text-3);
+}
+.clockp__rel span:first-child {
+  color: var(--accent);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clockp {
+    animation: none;
+  }
+}

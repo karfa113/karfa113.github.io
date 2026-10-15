@@ -1,0 +1,326 @@
+/* ───────────── Window manager chrome ───────────── */
+
+/* The layer never blocks the desktop; only the windows themselves are interactive. */
+.windows {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.win {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  outline: none;
+  transition:
+    width var(--t-base) var(--ease),
+    height var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease);
+}
+/* No easing while the user is dragging/resizing — the window must track the pointer exactly. */
+.win[data-gesture] {
+  transition: none;
+  user-select: none;
+}
+.win[data-gesture] .win__frame {
+  box-shadow: var(--highlight), var(--shadow), 0 0 0 1px var(--line-strong);
+}
+
+.win__frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-win);
+  background: var(--glass);
+  box-shadow: var(--highlight), var(--shadow-sm);
+  backdrop-filter: blur(24px) saturate(1.25);
+  -webkit-backdrop-filter: blur(24px) saturate(1.25);
+  transform-origin: 50% 100%;
+  transition:
+    opacity var(--t-base) var(--ease),
+    transform 200ms var(--ease),
+    box-shadow var(--t-base) var(--ease),
+    border-color var(--t-base) var(--ease);
+  animation: win-in var(--t-base) var(--ease) backwards;
+}
+.win[data-front='true'] .win__frame {
+  border-color: var(--line-strong);
+  box-shadow: var(--highlight), var(--shadow);
+}
+.win[data-max='true'] .win__frame {
+  border-radius: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+/* Minimise: a short, controlled slide toward the dock. */
+.win[data-hidden='true'] {
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    visibility 0s linear 200ms,
+    width var(--t-base) var(--ease),
+    height var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease);
+}
+.win[data-hidden='true'] .win__frame {
+  opacity: 0;
+  transform: translateY(32px) scale(0.92);
+}
+
+.win[data-closing='true'] {
+  pointer-events: none;
+}
+.win[data-closing='true'] .win__frame {
+  animation: win-out 150ms var(--ease) forwards;
+}
+
+@keyframes win-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(6px);
+  }
+}
+@keyframes win-out {
+  to {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+/* ── Title bar ── */
+.win__bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  height: 40px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(to bottom, var(--hover), transparent);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.win[data-gesture='drag'] .win__bar {
+  cursor: grabbing;
+}
+.win[data-max='true'] .win__bar {
+  cursor: var(--cur-default);
+}
+.win__id {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.win__glyph {
+  flex: none;
+  color: var(--text-2);
+}
+.win[data-front='true'] .win__glyph {
+  color: var(--text);
+}
+.win__title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-2);
+}
+.win[data-front='true'] .win__title {
+  color: var(--text);
+}
+.win__path {
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: var(--fs-2xs);
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win__controls {
+  flex: none;
+  display: flex;
+  gap: 8px;
+  padding-right: 4px;
+}
+.tl {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--tl-idle, #4a4b4f);
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.35);
+  transition: background var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+}
+/* enlarge hit area without changing the look */
+.tl::before {
+  content: '';
+  position: absolute;
+  inset: -6px -4px;
+}
+.tl svg {
+  width: 8px;
+  height: 8px;
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.62);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease);
+}
+.win[data-front='true'] .tl--close { background: #ff5f57; }
+.win[data-front='true'] .tl--min { background: #febc2e; }
+.win[data-front='true'] .tl--max { background: #28c840; }
+.win__controls:hover .tl svg,
+.win__controls:focus-within .tl svg {
+  opacity: 1;
+}
+.win[data-front='false'] .win__controls:hover .tl--close { background: #ff5f57; }
+.win[data-front='false'] .win__controls:hover .tl--min { background: #febc2e; }
+.win[data-front='false'] .win__controls:hover .tl--max { background: #28c840; }
+.tl:active {
+  filter: brightness(0.8);
+}
+
+/* ── Body & status ── */
+.win__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  container-type: inline-size;
+  container-name: win;
+}
+.win__status {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  padding: 0 14px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  user-select: none;
+}
+
+.win__resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  touch-action: none;
+  background: linear-gradient(135deg, transparent 55%, var(--line-strong) 55%, var(--line-strong) 62%, transparent 62%, transparent 74%, var(--line-strong) 74%, var(--line-strong) 81%, transparent 81%);
+}
+
+/* ── Mobile: the same window becomes a full-screen panel ── */
+.win[data-mobile='true'] {
+  position: fixed;
+  top: calc(var(--m-bar-h, 44px) + var(--safe-top));
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  transform: none;
+  transition: none;
+}
+.win[data-mobile='true'] .win__frame {
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transform-origin: 50% 0;
+}
+.win[data-mobile='true'][data-hidden='true'] {
+  visibility: hidden;
+  transition: none;
+}
+.win[data-mobile='true'] .win__bar {
+  height: 48px;
+  padding: 0 10px 0 4px;
+  cursor: var(--cur-default);
+  justify-content: flex-start;
+}
+.win__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 10px 0 6px;
+  border-radius: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+.win__back:active {
+  background: var(--press);
+}
+.win[data-mobile='true'] .win__id {
+  margin-left: 4px;
+}
+.win[data-mobile='true'] .win__path {
+  display: none;
+}
+.win[data-mobile='true'] .win__title {
+  color: var(--text);
+}
+
+@container win (max-width: 520px) {
+  .win__path {
+    display: none;
+  }
+}
+/* ── Snap preview: where a dragged window will land when released ── */
+.snap-preview {
+  position: absolute;
+  z-index: 8000;
+  pointer-events: none;
+  box-sizing: border-box;
+  border: 1.5px solid var(--accent);
+  border-radius: calc(var(--r-win) + 2px);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent), 0 0 0 1px rgba(0, 0, 0, 0.18);
+  animation: snap-in 140ms var(--ease) backwards;
+  transition:
+    left var(--t-base) var(--ease),
+    top var(--t-base) var(--ease),
+    width var(--t-base) var(--ease),
+    height var(--t-base) var(--ease);
+}
+@keyframes snap-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .snap-preview {
+    animation: none;
+    transition: none;
+  }
+}

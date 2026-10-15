@@ -1,0 +1,176 @@
+/* ───────────── Mobile shell (< 768px) ───────────── */
+.m-shell {
+  --m-bar-h: 44px;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 80% 40% at 80% 0%, var(--wall-glow-a), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 0% 100%, var(--wall-glow-b), transparent 70%),
+    var(--bg);
+}
+
+/* Status strip: quiet on the home screen, solid while an app is open. */
+.m-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 9500;
+  height: calc(var(--m-bar-h) + var(--safe-top));
+  padding: var(--safe-top) 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.m-bar[data-app-open] {
+  background: var(--glass-strong);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+.m-bar__time {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.m-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-2);
+}
+.m-bar .bar__btn--icon {
+  width: 44px;
+  height: 44px;
+  margin-right: -12px;
+}
+
+.m-home {
+  flex: 1;
+  overflow-y: auto;
+  padding: calc(var(--m-bar-h) + var(--safe-top) + 24px) 20px calc(var(--safe-bottom) + 96px);
+}
+.m-home__name {
+  font-size: var(--fs-2xl);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.m-home__role {
+  margin-top: 6px;
+  color: var(--text-2);
+}
+.m-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px 6px;
+  margin-top: 36px;
+}
+.m-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 2px 0;
+  border-radius: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+/* App-icon tile: a rounded square, like a phone home screen. */
+.m-app__tile {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid var(--line-strong);
+  border-radius: 17px;
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  box-shadow: var(--highlight), var(--shadow-sm);
+  color: var(--text);
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.m-app:active .m-app__tile {
+  transform: scale(0.92);
+  background: var(--accent-soft);
+}
+.m-app:focus-visible {
+  outline-offset: 2px;
+}
+.m-app__label {
+  max-width: 100%;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+/* Floating search pill on the home screen (replaces a nav bar). */
+.m-search {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 20px);
+  transform: translateX(-50%);
+  z-index: 9000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 168px;
+  height: 44px;
+  padding: 0 22px;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--glass-strong);
+  box-shadow: var(--highlight), var(--shadow-sm);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+.m-search:active {
+  transform: translateX(-50%) scale(0.97);
+}
+
+/* On mobile the window layer sits between the bars. */
+.m-shell .windows {
+  position: fixed;
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .palette {
+    padding-top: calc(var(--safe-top) + 12px);
+  }
+  .palette__box {
+    max-height: calc(100dvh - 24px - var(--safe-top));
+  }
+  .palette__sub {
+    display: none;
+  }
+  .palette__foot {
+    display: none;
+  }
+  .palette__item {
+    min-height: 48px;
+  }
+  .palette__field {
+    height: 56px;
+  }
+  .palette__field input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+  .search input,
+  .select select {
+    font-size: 16px;
+  }
+  .btn {
+    min-height: 40px;
+  }
+  .chip {
+    height: 36px;
+  }
+}

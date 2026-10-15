@@ -1,0 +1,24 @@
+/* ───────────── Custom cursor ─────────────
+   Pure CSS (SVG data-URIs): no JS, no lag. Only for mouse/trackpad devices.
+   Drag / resize / text cursors stay native so their meaning is never lost.
+   Colours: dark graphite fill with an orange stroke (brighter orange over clickable things). */
+:root {
+  --cur-default: auto;
+  --cur-pointer: pointer;
+}
+@media (pointer: fine) {
+  :root {
+    --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cfilter id='s' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1' flood-color='%23000' flood-opacity='.45'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.36Z' fill='%23141312' stroke='%23e8843c' stroke-width='1.5' stroke-linejoin='round' filter='url(%23s)'/%3E%3C/svg%3E") 6 3, default;
+    --cur-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cfilter id='s' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1' flood-color='%23000' flood-opacity='.45'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.36Z' fill='%23141312' stroke='%23ffa05a' stroke-width='1.5' stroke-linejoin='round' filter='url(%23s)'/%3E%3C/svg%3E") 6 3, pointer;
+  }
+}
+
+html {
+  cursor: var(--cur-default);
+}
+:where(a[href], button, summary, select, label[for], [role='button'], [role='tab'], [role='option'], [role='menuitem'], input[type='checkbox'], input[type='radio'], input[type='range']) {
+  cursor: var(--cur-pointer);
+}
+:where(button:disabled, [aria-disabled='true']) {
+  cursor: not-allowed;
+}

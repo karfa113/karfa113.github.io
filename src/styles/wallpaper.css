@@ -1,0 +1,19 @@
+/* Wallpaper: the ridge art sits on a quiet two-tone base. Replaces the older plain background. */
+.wallpaper {
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 56% 38%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 0% 0%, var(--wall-glow-a), transparent 65%),
+    var(--bg);
+}
+.wallpaper__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Mobile: the wallpaper sits behind the home screen content. */
+.m-shell > .m-home {
+  position: relative;
+  z-index: 1;
+}

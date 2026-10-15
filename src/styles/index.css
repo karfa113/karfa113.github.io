@@ -1,0 +1,12 @@
+@import './tokens.css';
+@import './base.css';
+@import './cursor.css';
+@import './shell.css';
+@import './windows.css';
+@import './apps.css';
+@import './mobile.css';
+@import './gradient-strokes.css';
+@import './wallpaper.css';
+@import './terminal.css';
+@import './clock.css';
+@import './orange-themes.css'; /* keep last */
