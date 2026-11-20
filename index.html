@@ -10,7 +10,7 @@
 <meta property="og:title" content="Monojit Karfa — Designer Portfolio">
 <meta property="og:description" content="Selected work, services and process.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23FFD84A'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="./Frame%2037.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
@@ -75,7 +75,8 @@ a{color:inherit}
 
 /* Nav */
 header.nav{padding:24px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.logo{width:48px;height:48px;border-radius:9999px;background:var(--primary);color:var(--neutral);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px;text-decoration:none;flex:none}
+.logo{width:48px;height:48px;border-radius:9999px;background:var(--primary);display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none;flex:none}
+.logo img{display:block;width:100%;height:100%;object-fit:cover}
 .menu-toggle{display:none;width:48px;height:48px;padding:13px;border:1px solid var(--neutral-80);border-radius:14px;background:var(--surface);appearance:none;flex-direction:column;align-items:stretch;justify-content:center;gap:5px}
 .menu-toggle span{display:block;width:100%;height:2px;border-radius:2px;background:var(--primary);transition:transform .25s,opacity .2s}
 .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -362,7 +363,7 @@ html.cur-down.cur-view{--s:1.9}
 <div class="wrap">
 
 <header class="nav" id="siteNav">
-  <a class="logo" href="#top" aria-label="Home">MK</a>
+  <a class="logo" href="#top" aria-label="Monojit Karfa — home"><img src="./Frame%2037.png" alt="" width="48" height="48"></a>
   <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
     <span></span><span></span><span></span>
   </button>
