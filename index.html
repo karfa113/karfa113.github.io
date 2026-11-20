@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Monojit Karfa - Portfolio</title>
-<meta name="description" content="Monojit Karfa is a UI/UX designer in [your city]. Selected work, services and process.">
+<meta name="description" content="Monojit Karfa is a UI/UX designer in Burdwan crafting clear, memorable interfaces. Selected work, services and process.">
 <meta name="theme-color" content="#FFD84A">
 <script>(function(d){d.classList.add('js','is-loading');setTimeout(function(){d.classList.remove('is-loading')},10000)})(document.documentElement)</script>
 <meta property="og:title" content="Monojit Karfa — Designer Portfolio">
 <meta property="og:description" content="Selected work, services and process.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="./Frame%2037.png">
+<link rel="icon" type="image/png" href="./assets/Frame%2037.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
@@ -133,7 +133,7 @@ header.nav{padding:24px 0;display:flex;flex-wrap:wrap;align-items:center;justify
 .card.resetting{transition:border-color .3s,box-shadow .3s,transform .55s cubic-bezier(.2,.7,.2,1)}
 .card:hover{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary),0 20px 44px rgba(0,0,0,.5);--ascale:1.08;--arot:-3deg}
 .art{height:300px;border-radius:14px;overflow:hidden}
-.art svg{display:block;width:100%;height:100%;transform:translate3d(var(--ax,0px),var(--ay,0px),0) scale(var(--ascale,1)) rotate(var(--arot,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.art svg,.art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transform:translate3d(var(--ax,0px),var(--ay,0px),0) scale(var(--ascale,1)) rotate(var(--arot,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .arrow{font-size:32px;line-height:1;color:var(--primary);transition:transform .3s}
 .card:hover .arrow{transform:translate(4px,-4px)}
 
@@ -363,7 +363,7 @@ html.cur-down.cur-view{--s:1.9}
 <div class="wrap">
 
 <header class="nav" id="siteNav">
-  <a class="logo" href="#top" aria-label="Monojit Karfa — home"><img src="./Frame%2037.png" alt="" width="48" height="48"></a>
+  <a class="logo" href="#top" aria-label="Monojit Karfa — home"><img src="./assets/Frame%2037.png" alt="" width="48" height="48"></a>
   <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
     <span></span><span></span><span></span>
   </button>
@@ -386,7 +386,7 @@ html.cur-down.cur-view{--s:1.9}
   <div class="tag bob rise"><span class="dot"></span><span>Available now</span></div>
   <h1 id="heroTitle" class="rise d1"><span class="hero-line"><span class="hero-lead">I design</span> <span id="rotWord">interfaces</span></span><span class="hero-line">people remember.</span></h1>
   <div id="heroChips" class="row rise d2" style="justify-content:center;gap:10px;margin-top:40px"></div>
-  <p class="sub rise d3" style="margin:36px 0 0;max-width:620px">I'm Monojit Karfa, a UI/UX designer in [your city]. I help [type of client] turn [what they bring you] into work people remember.</p>
+  <p class="sub rise d3" style="margin:36px 0 0;max-width:620px">I'm Monojit Karfa, a UI/UX designer in Burdwan who turns ambitious ideas into clear, memorable interfaces. I help founders, clubs and teams shape products people actually enjoy using.</p>
   <div class="row rise d4" style="justify-content:center;gap:14px;margin-top:40px">
     <a class="btn btn-primary" href="#work">See selected work</a>
     <a class="btn btn-secondary" href="#contact">Get in touch</a>
@@ -461,10 +461,10 @@ html.cur-down.cur-view{--s:1.9}
     <h2 class="display">How I can <em>help.</em></h2>
   </div>
   <div class="reveal">
-    <div class="svc"><span class="num">01</span><span class="name">[Service one]</span><p class="body">[One line on what this includes and who it's for.]</p></div>
-    <div class="svc"><span class="num">02</span><span class="name">[Service two]</span><p class="body">[One line on what this includes and who it's for.]</p></div>
-    <div class="svc"><span class="num">03</span><span class="name">[Service three]</span><p class="body">[One line on what this includes and who it's for.]</p></div>
-    <div class="svc"><span class="num">04</span><span class="name">[Service four]</span><p class="body">[One line on what this includes and who it's for.]</p></div>
+    <div class="svc"><span class="num">01</span><span class="name">UI design</span><p class="body">Screens, components and design systems that feel consistent from the first click to the last.</p></div>
+    <div class="svc"><span class="num">02</span><span class="name">UX design</span><p class="body">Research-led flows and wireframes that turn complex ideas into simple, confident journeys.</p></div>
+    <div class="svc"><span class="num">03</span><span class="name">Prototyping</span><p class="body">Clickable Figma prototypes that let you test the experience before a single line of code.</p></div>
+    <div class="svc"><span class="num">04</span><span class="name">Visual &amp; event design</span><p class="body">Posters, certificates and social visuals that give clubs and campaigns a recognizable voice.</p></div>
   </div>
 </section>
 
@@ -474,9 +474,9 @@ html.cur-down.cur-view{--s:1.9}
     <h2 class="display">Listen. Explore. <em>Deliver.</em></h2>
   </div>
   <div class="row" style="gap:24px">
-    <div class="step reveal"><div class="n">1</div><h3 class="h-serif">Listen</h3><p class="body" style="margin:0">[Describe how you start: the questions you ask, who you talk to and what you look for before touching a canvas.]</p></div>
-    <div class="step reveal"><div class="n">2</div><h3 class="h-serif">Explore</h3><p class="body" style="margin:0">[Describe your exploration phase: sketches, options, how many directions you show and how you decide.]</p></div>
-    <div class="step reveal"><div class="n">3</div><h3 class="h-serif">Deliver</h3><p class="body" style="margin:0">[Describe delivery: handoff, build, launch and what the client walks away with.]</p></div>
+    <div class="step reveal"><div class="n">1</div><h3 class="h-serif">Listen</h3><p class="body" style="margin:0">I start by asking who you're designing for, what problem you're solving and what success should look like — then map the constraints before opening Figma.</p></div>
+    <div class="step reveal"><div class="n">2</div><h3 class="h-serif">Explore</h3><p class="body" style="margin:0">I sketch a few directions, compare flows and layouts, and share early options so we choose the strongest route together before polishing.</p></div>
+    <div class="step reveal"><div class="n">3</div><h3 class="h-serif">Deliver</h3><p class="body" style="margin:0">I hand over organized screens, components and redlines, and stay involved through build and launch so the details survive.</p></div>
   </div>
 </section>
 
@@ -498,7 +498,7 @@ html.cur-down.cur-view{--s:1.9}
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <p class="reveal" style="margin:0;max-width:1000px;font-family:var(--serif);font-size:clamp(32px,5vw,64px);line-height:1.25;letter-spacing:-.02em">I'm Monojit Karfa, a UI/UX designer in [your city]. I care about the <span class="accent">details people feel</span> long before they can explain them.</p>
+  <p class="reveal" style="margin:0;max-width:1000px;font-family:var(--serif);font-size:clamp(32px,5vw,64px);line-height:1.25;letter-spacing:-.02em">I'm Monojit Karfa, a UI/UX designer in Burdwan who cares about the <span class="accent">details people feel</span> long before they can explain them.</p>
   <div class="row" style="gap:24px;margin-top:56px">
     <div class="panel reveal">
       <h3 class="h-serif" style="margin-bottom:16px">What I do</h3>
@@ -508,7 +508,7 @@ html.cur-down.cur-view{--s:1.9}
       </div>
     </div>
     <div class="panel reveal"><h3 class="h-serif" style="margin-bottom:16px">Right now</h3><p class="body" style="margin:0">Lead at the Design Club of AOT and Design Team Member at the Algorand Blockchain Club AOT.</p></div>
-    <div class="panel reveal"><h3 class="h-serif" style="margin-bottom:16px">Kind words</h3><p class="body" style="margin:0">[A one-line testimonial from a client or collaborator.]<span class="small" style="display:block;margin-top:12px">[Name, company]</span></p></div>
+    <div class="panel reveal"><h3 class="h-serif" style="margin-bottom:16px">Working together</h3><p class="body" style="margin:0">I keep feedback loops short and decisions clear, whether I'm mentoring club members or shaping a product screen.<span class="small" style="display:block;margin-top:12px">Design Club, AOT</span></p></div>
   </div>
 </section>
 
@@ -591,15 +591,14 @@ html.cur-down.cur-view{--s:1.9}
   var words = ['interfaces', 'apps', 'platforms', 'experiences'];
   var marquee = ['UI design', 'UX design', 'Mobile apps', 'Web platforms', 'Prototyping', 'Content creation'];
 
-  /* Projects: swap each `art` for an <img src="your-image.jpg"> when you have real work */
-  var S = function (inner, bg) { return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="' + bg + '"/>' + inner + '</svg>'; };
+  /* Projects: artwork images are stored locally in assets/ */
   var projects = [
-    { cat: 'Brand', title: '[Project one]', art: S('<circle cx="170" cy="150" r="90" fill="#0B0B0C"/><rect x="220" y="108" width="130" height="84" rx="42" fill="#FFFDF6"/>', '#FFD84A') },
-    { cat: 'Web', title: '[Project two]', art: S('<circle cx="140" cy="150" r="72" fill="#FFD84A"/><circle cx="262" cy="150" r="72" fill="#FFFDF6"/><rect x="170" y="128" width="60" height="44" rx="22" fill="#0B0B0C"/>', '#2D39FF') },
-    { cat: 'Product', title: '[Project three]', art: S('<rect x="120" y="45" width="160" height="210" rx="80" fill="#0B0B0C"/><circle cx="200" cy="112" r="32" fill="#FFD84A"/>', '#FFFDF6') },
-    { cat: 'Brand', title: '[Project four]', art: S('<rect x="70" y="66" width="260" height="46" rx="23" fill="#FFD84A"/><rect x="70" y="127" width="190" height="46" rx="23" fill="#FFFDF6"/><rect x="70" y="188" width="120" height="46" rx="23" fill="#2D39FF"/>', '#2A2A2C') },
-    { cat: 'Web', title: '[Project five]', art: S('<circle cx="200" cy="150" r="118" fill="#0B0B0C"/><circle cx="200" cy="150" r="80" fill="#FFD84A"/><circle cx="200" cy="150" r="42" fill="#FFFDF6"/>', '#FFD84A') },
-    { cat: 'Product', title: '[Project six]', art: S('<rect x="112" y="62" width="176" height="176" rx="22" fill="#FFFDF6" transform="rotate(12 200 150)"/><circle cx="200" cy="150" r="48" fill="#FFD84A"/>', '#2D39FF') }
+    { cat: 'Web', title: 'Portfolio Design', year: '2026', badge: 'Dribbble ↗', desc: 'A personal portfolio concept exploring expressive type, soft green tones and a modular layout that keeps the work front and center.', art: '<img src="./assets/portfolio-inspiration.png" alt="Portfolio design preview">', url: 'https://dribbble.com/shots/27907338-Portfolio-Inspiration' },
+    { cat: 'Brand', title: 'Event Collateral Design', year: '2026', badge: '3 Pinterest refs ↗', desc: 'A curated moodboard of certificate, timeline and session-poster directions for an event identity.', art: '<img src="./assets/poster.png" alt="Event collateral design poster">', links: [{ label: 'Certificate ↗', url: 'https://in.pinterest.com/pin/884675920595155486/' }, { label: 'Timeline ↗', url: 'https://in.pinterest.com/pin/884675920595155516/' }, { label: 'Session poster ↗', url: 'https://in.pinterest.com/pin/884675920595155533/' }] },
+    { cat: 'Web', title: 'Community Website Design', year: '2026', badge: 'Dribbble ↗', desc: 'A community hub concept pairing a warm editorial palette with clear structure and easy-to-scan content.', art: '<img src="./assets/community-website-inspiration.png" alt="Community Website design preview">', url: 'https://dribbble.com/shots/27907383-Community-Website-Inspiration' },
+    { cat: 'Product', title: 'Calculator Design', year: '2026', badge: 'Dribbble ↗', desc: 'A tactile calculator concept with raised 3D keycaps, warm retro tones and careful attention to light and depth.', art: '<img src="./assets/calculator-design-inspiration.png" alt="Calculator design preview">', url: 'https://dribbble.com/shots/27907476-Calculator-Design-Inspiration' },
+    { cat: 'Product', title: 'Trip Planner App', year: '2026', badge: 'Dribbble ↗', desc: 'A trip-planning app that brings itinerary building and budget estimation together in one calm, easy-to-scan experience.', art: '<img src="./assets/Frame%203.png" alt="Trip planner app design preview">', url: 'https://dribbble.com/shots/27907514-Trip-planner-app-inspiration' },
+    { cat: 'Product', title: 'Community Interaction App', year: '2026', badge: 'Dribbble ↗', desc: 'A local social platform that helps newcomers settle in, discover nearby people and feel comfortable connecting with their community.', art: '<img src="./assets/Frame%204.png" alt="Community interaction app design preview">', url: 'https://dribbble.com/shots/27907543-Community-interaction-app-for-newcomers-in-society' }
   ];
   var state = { word: 0, filter: 'All', pauseUntil: 0 };
 
@@ -687,17 +686,39 @@ html.cur-down.cur-view{--s:1.9}
     });
     var pb = $('projects'); pb.textContent = '';
     projects.filter(function (p) { return state.filter === 'All' || p.cat === state.filter; }).forEach(function (p, i) {
-      var a = el('a', 'card reveal'); a.href = '#contact';
+      var grouped = !!(p.links && p.links.length);
+      var a = el(grouped ? 'div' : 'a', 'card reveal');
+      if (!grouped) {
+        a.href = p.url || '#contact';
+        if (p.url) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      }
       if (animateIn && !calm) { a.style.setProperty('--i', i); a.classList.add('filter-in'); }
       var art = el('div', 'art'); art.innerHTML = p.art;
       var foot = el('div', ''); foot.style.cssText = 'display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-top:24px';
       var info = el('div', '');
-      var meta = el('div', ''); meta.style.cssText = 'display:flex;align-items:center;gap:12px;margin-bottom:10px';
-      meta.appendChild(el('span', 'pill', p.cat)); meta.appendChild(el('span', 'small', '[Year]'));
-      var d = el('p', 'body', '[One line on the problem, your role and the result.]'); d.style.margin = '8px 0 0';
-      info.appendChild(meta); info.appendChild(el('h3', 'h-serif', p.title)); info.appendChild(d);
-      var ar = el('span', 'arrow', '↗'); ar.setAttribute('aria-hidden', 'true');
-      foot.appendChild(info); foot.appendChild(ar);
+      var meta = el('div', ''); meta.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px';
+      meta.appendChild(el('span', 'pill', p.cat));
+      if (p.year) meta.appendChild(el('span', 'small', p.year));
+      if (p.badge) meta.appendChild(el('span', 'pill', p.badge));
+      info.appendChild(meta); info.appendChild(el('h3', 'h-serif', p.title));
+      if (p.desc) {
+        var d = el('p', 'body', p.desc); d.style.margin = '8px 0 0';
+        info.appendChild(d);
+      }
+      if (grouped) {
+        var links = el('div', ''); links.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:14px';
+        p.links.forEach(function (l) {
+          var link = el('a', 'chip', l.label);
+          link.href = l.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+          links.appendChild(link);
+        });
+        info.appendChild(links);
+      }
+      foot.appendChild(info);
+      if (!grouped) {
+        var ar = el('span', 'arrow', '↗'); ar.setAttribute('aria-hidden', 'true');
+        foot.appendChild(ar);
+      }
       a.appendChild(art); a.appendChild(foot); pb.appendChild(a);
       attachTilt(a); watchReveal(a);
     });

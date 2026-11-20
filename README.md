@@ -27,9 +27,10 @@ A single-page personal portfolio for a UI/UX designer, built as a static site wi
 - All motion is disabled automatically when `prefers-reduced-motion: reduce` is set
 
 ### Work
-- Filterable grid of generated SVG artwork (All / Brand / Web / Product)
+- Filterable grid of real project cards using local images in `assets/` (All / Brand / Web / Product)
+- Each card links to its original Dribbble or Pinterest reference; the event card exposes three separate Pinterest links
 - Staggered out/in animation when switching filters
-- Pointer-driven 3D card tilt with opposite-direction SVG parallax (fine-pointer devices only)
+- Pointer-driven 3D card tilt with image parallax (fine-pointer devices only)
 
 ### Code
 - BunkSafe, Regex Automata and Sem Dump as feature cards with distinct warm accents, numbered ghost watermarks and subtle corner glows
@@ -39,7 +40,7 @@ A single-page personal portfolio for a UI/UX designer, built as a static site wi
 ### Other sections
 - Services, process and achievements timeline
 - Achievements use bracketed year ranges and real role descriptions
-- About panel with tool pills, current roles and a testimonial slot
+- About panel with tool pills, current roles and a collaboration note
 
 ### Contact form
 - Centered **Send message** button with the status text below it
@@ -86,17 +87,17 @@ Almost everything lives in `index.html`.
 
 | What | Where | Notes |
 | --- | --- | --- |
-| Page title and meta description | Top of `<head>` | Replace the city placeholder with your real location. |
+| Page title and meta description | Top of `<head>` | Currently uses Burdwan. |
 | Availability tag | Hero section | Currently reads `Available now`. |
-| Hero and about copy | Hero and About sections | Replace `[your city]`, `[type of client]`, `[what they bring you]`. |
+| Hero and about copy | Hero and About sections | Filled with real copy; update if your positioning changes. |
 | Rotating words | `words` array in the script | Defaults to `interfaces`, `apps`, `platforms`, `experiences`. |
 | Hero word pill | `#rotWord` CSS rules | Yellow box, italic text; all words share one grid cell so the width is stable. |
 | Marquee items | `marquee` array in the script | Discipline labels shown in the scrolling strip. |
-| Selected work cards | `projects` array in the script | Edit category, title and inline SVG art. Also update the generated `[Year]` and description. |
+| Selected work cards | `projects` array in the script | Edit category, title, local image in `assets/`, link and optional Pinterest links; year and description are stored per card. |
 | Code project accents | Inline `--accent`, `--accent-soft`, `--accent-ink` on each `.codecard` | Currently yellow, warm gray and cream. The hover ring always uses `--primary`. |
-| Services | Services section | Four placeholder service rows. |
-| Process copy | Process section | Three placeholder descriptions. |
-| Testimonial | About section | Replace the placeholder quote and attribution. |
+| Services | Services section | Four real rows: UI design, UX design, prototyping and visual/event design. |
+| Process copy | Process section | Three real step descriptions. |
+| Collaboration note | About section | Swap in a real testimonial when you have one. |
 | Résumé button | Contact section | Currently commented out; uncomment and point it at a real PDF. |
 | Contact form endpoint | `FORM_ENDPOINT` in the script | Set to your Formspree URL, or leave empty to use `mailto:`. |
 | Success button state | `.cform button.btn.sent` CSS and the submit handler | Yellow background with the label `Message sent`. |
@@ -110,17 +111,12 @@ To use your own form, create one at [formspree.io](https://formspree.io/) and pa
 
 ## Before publishing
 
-A few template placeholders are still present in `index.html`:
+No template placeholders remain. Optional things to check:
 
-- `[your city]`, `[type of client]`, `[what they bring you]`
-- `[Service one]` … `[Service four]`
-- `[Describe how you start…]`, `[Describe your exploration phase…]`, `[Describe delivery…]`
-- `[A one-line testimonial…]` and `[Name, company]`
-- `[Project one]` … `[Project six]` in the `projects` array
-- `[Year]` and `[One line on the problem, your role and the result.]` in generated work cards
-- The `Download résumé` button is commented out until you have a PDF
-
-Replace these with real content before pushing live.
+- Add a `LICENSE` file if you want to open-source the code
+- Add a résumé PDF and uncomment the **Download résumé** button if you want it live
+- Confirm `FORM_ENDPOINT` is still correct, or leave it empty to use the `mailto:` fallback
+- Replace the collaboration note with a real testimonial when you get one
 
 ---
 
@@ -151,11 +147,12 @@ https://karfa113.github.io/
 
 ```text
 .
+├── assets/      # Local images used by the work cards, logo and favicon
 ├── index.html   # Entire site: markup, styles and script
 └── README.md    # This file
 ```
 
-No build step, no dependencies to install and no external assets other than Google Fonts and Formspree.
+No build step, no dependencies to install. Images are local in `assets/`; only Google Fonts and Formspree are external.
 
 ---
 
