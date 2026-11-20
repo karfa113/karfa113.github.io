@@ -1,69 +1,175 @@
-# MONO OS
+# Monojit Karfa — Designer Portfolio
 
-**An interactive portfolio by Monojit Karfa.**
+A single-page personal portfolio for a UI/UX designer, built as a static site with plain HTML, CSS and JavaScript. It includes a filterable work grid, featured coding projects, an achievements timeline, a contact form powered by Formspree, an interactive canvas footer, and a set of scroll- and pointer-driven motion details.
 
-MONO OS is a personal portfolio designed as a small operating system. Explore projects, experience, academics, skills, and contact details through a responsive desktop-inspired interface instead of a traditional portfolio page.
+**Stack:** HTML · CSS · Vanilla JavaScript · Canvas API · Google Fonts · Formspree · GitHub Pages
 
-## Explore
+---
 
-- **About Me** — profile, approach, interests, and philosophy
-- **Design Studio** — UI/UX work and case studies
-- **Code Lab** — programming and development projects
-- **Projects** — a complete project archive
-- **Academics** — education and learning
-- **Experience** — roles, responsibilities, and contributions
-- **Resume** — professional summary and resume viewer
-- **Contact** — email, GitHub, LinkedIn, and social links
-- **Terminal** — a command-line way to browse the portfolio
+## Features
 
-The interface includes movable windows, a dock, a command palette, responsive mobile navigation, and persistent light and dark themes.
+### Navigation
+- Scroll-progress bar across the top of the viewport
+- Scroll-spy: the active section's nav link turns yellow with a small dot (a left-side dot inside the mobile dropdown)
+- Desktop nav has the logo left, links centered and **Say hello** pinned right
+- Mobile (≤640px) uses a three-line hamburger that opens a themed dropdown; closes on link click, outside click or Escape
+- Smooth section links
 
-## About me
+### Hero
+- Two lines on desktop, three on mobile ("I design" / rotating word / "people remember.")
+- The rotating word lives in a fixed-size yellow pill: every word is stacked in the same CSS grid cell, so the box stays as wide as the longest word and never shifts the layout
+- Staggered entrance animation and clickable word chips that pause the auto-rotation
 
-I am a designer and developer interested in the intersection of interface design, code, and creative problem-solving. I enjoy building thoughtful digital experiences, focused tools, and experiments that make ideas tangible.
+### Motion
+- Masked line-by-line reveal for the large display headings; lines are measured after fonts load and re-split on resize
+- Infinite discipline marquee that pauses on hover
+- Custom cursor with a trailing ring and context states (link, view, text, pressed)
+- All motion is disabled automatically when `prefers-reduced-motion: reduce` is set
 
-> Quiet interfaces, loud ideas.
+### Work
+- Filterable grid of generated SVG artwork (All / Brand / Web / Product)
+- Staggered out/in animation when switching filters
+- Pointer-driven 3D card tilt with opposite-direction SVG parallax (fine-pointer devices only)
 
-## Visit
+### Code
+- BunkSafe, Regex Automata and Sem Dump as feature cards with distinct warm accents, numbered ghost watermarks and subtle corner glows
+- Yellow hover ring shared across all three (no card movement)
+- Each card links to GitHub and either a live demo or screenshots
 
-Once deployed, the portfolio is available at:
+### Other sections
+- Services, process and achievements timeline
+- Achievements use bracketed year ranges and real role descriptions
+- About panel with tool pills, current roles and a testimonial slot
 
-```text
-https://<username>.github.io/
+### Contact form
+- Centered **Send message** button with the status text below it
+- Formspree submission with a `mailto:` fallback when no endpoint is configured
+- On success the button turns yellow and reads **"Message sent"**; on failure it reverts and shows an error
+- Honeypot field for basic spam protection
+- Accessible `aria-live` status messages
+
+### Footer
+- Interactive grid with a `<canvas>` layer: moving the pointer stamps small shapes (x, o, plus, star, box) that pop in and fade out
+- Works with mouse and touch; a short demo trail plays the first time the footer scrolls into view
+- Hint text adapts to pointer type and is hidden under reduced motion
+- Copyright line centered below the canvas area
+
+---
+
+## Quick start
+
+### Option 1 — Open directly
+
+Double-click `index.html` in your browser.
+
+### Option 2 — Run a local server
+
+```bash
+git clone https://github.com/karfa113/<repo-name>.git
+cd <repo-name>
+python -m http.server 8000
 ```
 
-For a project repository named `mono-os`, the project-site URL is:
+Then open <http://localhost:8000>.
 
-```text
-https://<username>.github.io/mono-os/
+You can also use any static server, for example:
+
+```bash
+npx serve .
 ```
 
-## Built with
+---
 
-- React
-- TypeScript
-- Bun
-- CSS
-- GitHub Pages
+## Configuration
 
-## Deployment
+Almost everything lives in `index.html`.
 
-This is a static browser-based portfolio. The included GitHub Actions workflow builds the site and deploys the generated `dist/` directory to GitHub Pages whenever changes are pushed to `main`.
+| What | Where | Notes |
+| --- | --- | --- |
+| Page title and meta description | Top of `<head>` | Replace the city placeholder with your real location. |
+| Availability tag | Hero section | Currently reads `Available now`. |
+| Hero and about copy | Hero and About sections | Replace `[your city]`, `[type of client]`, `[what they bring you]`. |
+| Rotating words | `words` array in the script | Defaults to `interfaces`, `apps`, `platforms`, `experiences`. |
+| Hero word pill | `#rotWord` CSS rules | Yellow box, italic text; all words share one grid cell so the width is stable. |
+| Marquee items | `marquee` array in the script | Discipline labels shown in the scrolling strip. |
+| Selected work cards | `projects` array in the script | Edit category, title and inline SVG art. Also update the generated `[Year]` and description. |
+| Code project accents | Inline `--accent`, `--accent-soft`, `--accent-ink` on each `.codecard` | Currently yellow, warm gray and cream. The hover ring always uses `--primary`. |
+| Services | Services section | Four placeholder service rows. |
+| Process copy | Process section | Three placeholder descriptions. |
+| Testimonial | About section | Replace the placeholder quote and attribution. |
+| Résumé button | Contact section | Currently commented out; uncomment and point it at a real PDF. |
+| Contact form endpoint | `FORM_ENDPOINT` in the script | Set to your Formspree URL, or leave empty to use `mailto:`. |
+| Success button state | `.cform button.btn.sent` CSS and the submit handler | Yellow background with the label `Message sent`. |
+| Fallback email | `MAIL_TO` in the script | Currently `karfamonojit123@gmail.com`. |
+| Footer trail colors and shapes | `COLORS` and `SHAPES` arrays in the script | Currently yellow, cream and blue shapes; five glyph types. |
+| Social links | Contact section | LinkedIn, GitHub and Instagram. |
 
-To use the user-site URL, the GitHub repository must be named:
+To use your own form, create one at [formspree.io](https://formspree.io/) and paste its URL into `FORM_ENDPOINT` in `index.html`. Leave it empty to use the `mailto:` fallback instead.
+
+---
+
+## Before publishing
+
+A few template placeholders are still present in `index.html`:
+
+- `[your city]`, `[type of client]`, `[what they bring you]`
+- `[Service one]` … `[Service four]`
+- `[Describe how you start…]`, `[Describe your exploration phase…]`, `[Describe delivery…]`
+- `[A one-line testimonial…]` and `[Name, company]`
+- `[Project one]` … `[Project six]` in the `projects` array
+- `[Year]` and `[One line on the problem, your role and the result.]` in generated work cards
+- The `Download résumé` button is commented out until you have a PDF
+
+Replace these with real content before pushing live.
+
+---
+
+## Deploying to GitHub Pages
+
+1. Push the folder to a GitHub repository.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, choose:
+   - **Source:** Deploy from a branch
+   - **Branch:** `main`
+   - **Folder:** `/ (root)`
+4. Click **Save**.
+5. Your site will be available at:
 
 ```text
-<username>.github.io
+https://karfa113.github.io/<repo-name>/
 ```
 
-GitHub Pages must be enabled with **Settings → Pages → Source: GitHub Actions**.
+If the repository is named `karfa113.github.io`, the URL will be:
+
+```text
+https://karfa113.github.io/
+```
+
+---
+
+## Project structure
+
+```text
+.
+├── index.html   # Entire site: markup, styles and script
+└── README.md    # This file
+```
+
+No build step, no dependencies to install and no external assets other than Google Fonts and Formspree.
+
+---
 
 ## Contact
 
-- Email: `monojit.karfa.24@aot.edu.in`
-- GitHub: [@karfa113](https://github.com/karfa113)
-- LinkedIn: [linkedin.com/in/karfa113](https://linkedin.com/in/karfa113)
-- Instagram: [@wl_monojit](https://instagram.com/wl_monojit)
+- **Email:** karfamonojit123@gmail.com
+- **GitHub:** [@karfa113](https://github.com/karfa113)
+- **LinkedIn:** [in/karfa113](https://www.linkedin.com/in/karfa113/)
+- **Instagram:** [@wl_monojit](https://www.instagram.com/wl_monojit/)
 
-Open to collaborations, internships, and interesting problems.
-# karfa113.github.io
+---
+
+## License
+
+This is a personal portfolio. No license has been applied yet — add a `LICENSE` file if you want to open-source the code.
+
+© 2026 Monojit Karfa
