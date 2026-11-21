@@ -87,7 +87,7 @@ Almost everything lives in `index.html`.
 
 | What | Where | Notes |
 | --- | --- | --- |
-| Page title and meta description | Top of `<head>` | Currently uses Burdwan. |
+| Page title and meta description | Top of `<head>` | No location mention. |
 | Availability tag | Hero section | Currently reads `Available now`. |
 | Hero and about copy | Hero and About sections | Filled with real copy; update if your positioning changes. |
 | Rotating words | `words` array in the script | Defaults to `interfaces`, `apps`, `platforms`, `experiences`. |

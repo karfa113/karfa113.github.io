@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Monojit Karfa - Portfolio</title>
-<meta name="description" content="Monojit Karfa is a UI/UX designer in Burdwan crafting clear, memorable interfaces. Selected work, services and process.">
+<meta name="description" content="Monojit Karfa is a UI/UX designer crafting clear, memorable interfaces. Selected work, services and process.">
 <meta name="theme-color" content="#FFD84A">
 <script>(function(d){d.classList.add('js','is-loading');setTimeout(function(){d.classList.remove('is-loading')},10000)})(document.documentElement)</script>
 <meta property="og:title" content="Monojit Karfa — Designer Portfolio">
@@ -385,8 +385,7 @@ html.cur-down.cur-view{--s:1.9}
 <section id="top" class="hero">
   <div class="tag bob rise"><span class="dot"></span><span>Available now</span></div>
   <h1 id="heroTitle" class="rise d1"><span class="hero-line"><span class="hero-lead">I design</span> <span id="rotWord">interfaces</span></span><span class="hero-line">people remember.</span></h1>
-  <div id="heroChips" class="row rise d2" style="justify-content:center;gap:10px;margin-top:40px"></div>
-  <p class="sub rise d3" style="margin:36px 0 0;max-width:620px">I'm Monojit Karfa, a UI/UX designer in Burdwan who turns ambitious ideas into clear, memorable interfaces. I help founders, clubs and teams shape products people actually enjoy using.</p>
+  <p class="sub rise d3" style="margin:36px 0 0;max-width:620px">I'm Monojit Karfa, a UI/UX designer who turns ambitious ideas into clear, memorable interfaces. I help founders, clubs and teams shape products people actually enjoy using.</p>
   <div class="row rise d4" style="justify-content:center;gap:14px;margin-top:40px">
     <a class="btn btn-primary" href="#work">See selected work</a>
     <a class="btn btn-secondary" href="#contact">Get in touch</a>
@@ -498,7 +497,7 @@ html.cur-down.cur-view{--s:1.9}
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <p class="reveal" style="margin:0;max-width:1000px;font-family:var(--serif);font-size:clamp(32px,5vw,64px);line-height:1.25;letter-spacing:-.02em">I'm Monojit Karfa, a UI/UX designer in Burdwan who cares about the <span class="accent">details people feel</span> long before they can explain them.</p>
+  <p class="reveal" style="margin:0;max-width:1000px;font-family:var(--serif);font-size:clamp(32px,5vw,64px);line-height:1.25;letter-spacing:-.02em">I'm Monojit Karfa, a UI/UX designer who cares about the <span class="accent">details people feel</span> long before they can explain them.</p>
   <div class="row" style="gap:24px;margin-top:56px">
     <div class="panel reveal">
       <h3 class="h-serif" style="margin-bottom:16px">What I do</h3>
@@ -600,7 +599,7 @@ html.cur-down.cur-view{--s:1.9}
     { cat: 'Product', title: 'Trip Planner App', year: '2026', badge: 'Dribbble ↗', desc: 'A trip-planning app that brings itinerary building and budget estimation together in one calm, easy-to-scan experience.', art: '<img src="./assets/Frame%203.png" alt="Trip planner app design preview">', url: 'https://dribbble.com/shots/27907514-Trip-planner-app-inspiration' },
     { cat: 'Product', title: 'Community Interaction App', year: '2026', badge: 'Dribbble ↗', desc: 'A local social platform that helps newcomers settle in, discover nearby people and feel comfortable connecting with their community.', art: '<img src="./assets/Frame%204.png" alt="Community interaction app design preview">', url: 'https://dribbble.com/shots/27907543-Community-interaction-app-for-newcomers-in-society' }
   ];
-  var state = { word: 0, filter: 'All', pauseUntil: 0 };
+  var state = { word: 0, filter: 'All' };
 
   /* Marquee (two copies for a seamless loop) */
   [0, 1].forEach(function (copy) {
@@ -625,16 +624,9 @@ html.cur-down.cur-view{--s:1.9}
       s.classList.toggle('on', i === state.word);
     });
     if (animate) { var cur = w.children[state.word]; void cur.offsetWidth; cur.classList.add('swap'); }
-    var box = $('heroChips'); box.textContent = '';
-    words.forEach(function (name, i) {
-      var b = el('button', 'chip' + (i === state.word ? ' active' : ''), name.charAt(0).toUpperCase() + name.slice(1));
-      b.type = 'button';
-      b.addEventListener('click', function () { state.pauseUntil = Date.now() + 7000; state.word = i; renderHero(true); });
-      box.appendChild(b);
-    });
   }
   setInterval(function () {
-    if (Date.now() < state.pauseUntil || document.hidden) return;
+    if (document.hidden) return;
     state.word = (state.word + 1) % words.length; renderHero(true);
   }, 2600);
 
