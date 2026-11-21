@@ -91,10 +91,12 @@ header.nav{padding:24px 0;display:flex;flex-wrap:wrap;align-items:center;justify
 .navlink.active::after{content:"";position:absolute;left:50%;bottom:-9px;width:6px;height:6px;margin-left:-3px;border-radius:9999px;background:var(--primary);animation:dotIn .35s cubic-bezier(.2,.7,.2,1) both}
 @media (max-width:820px){
   header.nav{flex-wrap:wrap}
-  .menu-toggle{display:flex}
+  .menu-toggle{display:flex;position:relative;z-index:61}
   .nav-spacer{display:none}
-  .nav-panel{display:none;position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:60;flex-direction:column;align-items:stretch;gap:6px;background:var(--primary);border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-  header.nav.open .nav-panel{display:flex}
+  /* Hidden state = shrunk and blurred behind the hamburger; removing .open replays this, so the box dissolves back into the button */
+  .nav-panel{display:flex;position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:60;flex-direction:column;align-items:stretch;gap:6px;background:var(--primary);border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;visibility:hidden;pointer-events:none;transform:scale(.3) translateY(-18px);transform-origin:100% 0;filter:blur(5px);transition:opacity .28s ease,transform .38s cubic-bezier(.2,.7,.2,1),filter .28s ease,visibility 0s linear .38s;will-change:transform,opacity}
+  /* Open state = unfolds out from behind the button */
+  header.nav.open .nav-panel{opacity:1;visibility:visible;pointer-events:auto;transform:none;filter:none;transition:opacity .3s ease .04s,transform .4s cubic-bezier(.2,.7,.2,1) .04s,filter .3s ease .04s,visibility 0s}
   .nav-panel nav{flex-direction:column;flex-wrap:nowrap;gap:0}
   .nav-panel .navlink{padding:12px 10px;border-radius:10px;color:var(--neutral);font-weight:600}
   .nav-panel .navlink:hover,.nav-panel .navlink.active{background:rgba(11,11,12,.12);color:var(--neutral)}
