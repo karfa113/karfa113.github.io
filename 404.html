@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found — Monojit Karfa</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFD84A">
+<link rel="icon" type="image/png" href="/assets/Frame%2037.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{--primary:#FFD84A;--neutral:#0B0B0C;--secondary:#FFFDF6;--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--primary);color:var(--neutral);font-family:var(--sans);display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;padding:clamp(16px,4vw,40px);-webkit-font-smoothing:antialiased}
+.top{display:flex;align-items:center;justify-content:space-between}
+.top img{width:48px;height:48px;display:block;border-radius:50%}
+.top span{font-size:14px;font-weight:500;opacity:.7}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(16px,3vw,28px);padding:clamp(24px,6vw,64px) 0}
+.code{font-family:var(--serif);font-size:clamp(120px,min(30vw,34vh),360px);line-height:.8;letter-spacing:-.03em;position:relative}
+.code i{font-style:italic;display:inline-block;animation:wob 5s ease-in-out infinite;transform-origin:50% 80%}
+@keyframes wob{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5vw,64px);line-height:1.05;max-width:16ch}
+h1 em{font-style:italic}
+p{font-size:clamp(16px,1.6vw,19px);line-height:1.5;max-width:44ch;opacity:.8}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--neutral);color:var(--primary);text-decoration:none;font-weight:500;font-size:16px;padding:16px 26px;border-radius:999px;transition:background .25s,color .25s,box-shadow .25s}
+.btn svg{width:16px;height:16px;transition:transform .25s}
+.btn:hover{background:var(--secondary);color:var(--neutral);box-shadow:0 0 0 2px var(--neutral)}
+.btn:hover svg{transform:translateX(-4px)}
+.btn:focus-visible{outline:3px solid var(--neutral);outline-offset:3px}
+footer{font-size:13px;opacity:.6;border-top:1px solid rgba(11,11,12,.2);padding-top:16px}
+@media (prefers-reduced-motion:reduce){.code i{animation:none}.btn,.btn svg{transition:none}}
+</style>
+</head>
+<body>
+<div class="top"><a href="/" aria-label="Monojit Karfa — home"><img src="/assets/Frame%2037.png" alt="" width="48" height="48"></a><span>Error 404</span></div>
+<main>
+  <div class="code" aria-hidden="true">4<i>0</i>4</div>
+  <h1>This page <em>wandered off.</em></h1>
+  <p>The link may be broken or the page may have moved. The work is still right where you left it.</p>
+  <a class="btn" href="/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>Back to portfolio</a>
+</main>
+<footer>© 2026 Monojit Karfa</footer>
+</body>
+</html>
